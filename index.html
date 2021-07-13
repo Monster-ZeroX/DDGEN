@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TeamDrive Generator</title>
+    <!-- Logo of the website -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/9m7KEx1.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/IFen7sx.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.imgur.com/9GIrFwq.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+     <!-- Needed Libraries -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Jacky-lei1/PicGO/css/classic-button.css" integrity="sha256-2O3BzKqYcXKGjs+J3+o9xNpfM0E2iKYC69I6oI73Yoc=" crossorigin="anonymous">
+    <!-- Hcaptcha -->
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+
+     
+     <!----------------------------------------------->
+     <!-- Configure the theme of the generator here -->
+     <!----------------------------------------------->
+    <style>
+        /*--------------------------------------------------*/
+        /*------------------General theme-------------------*/
+        /*--------------------------------------------------*/
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', 'Arial', sans-serif;
+        }
+        header{
+            background-image: url("https://picsum.photos/2000/2000");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+        .hidden {
+            display: none;
+        }
+        .btn{
+            margin-bottom: 0;
+        }
+        
+        /*--------------------Scrollbar---------------------*/
+        /*size of the scrollbar*/
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 0 pink;
+            border-radius: 50px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #606060;
+            border-radius: 15px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #424242;
+        }
+        /*-----------------End scrollbar--------------------*/
+
+
+
+
+        /*----------------------Spinner---------------------*/
+        .center{
+            left: 42%;
+            position: relative;
+            max-width: 45px
+        }
+
+        #nest5 {
+          display: block;
+          height: 45px;
+          width: 45px;
+          
+          left: 50%;
+          right: 50%;
+          transform: translate(-50%, -50%);
+          border: 3px solid transparent;
+          border-top-color: #4285F4;
+          border-radius: 50%;
+          left: 50%;
+          right: 50%;
+          margin-bottom: 25px;
+          margin-top: 25px;
+          transform: translate(-50%, -50%);
+          -webkit-animation: spin11 2s linear infinite;
+                  animation: spin11 2s linear infinite;
+        }
+
+        #nest5:before {
+          content: "";
+          position: absolute;
+          top: 7px;
+          right: 7px;
+          bottom: 7px;
+          left: 7px;
+          border: 3px solid transparent;
+          border-radius: 50%;
+          border-top-color: #DB4437;
+          -webkit-animation: spin11 3s linear infinite;
+                  animation: spin11 3s linear infinite;
+        }
+
+        #nest5:after {
+          content: "";
+          top: 15px;
+          position: absolute;
+          right: 15px;
+          bottom: 15px;
+          left: 15px;
+          border: 3px solid transparent;
+          border-radius: 50%;
+          border-top-color: #F4B400;
+          -webkit-animation: spin11 1.5s linear infinite;
+                  animation: spin11 1.5s linear infinite;
+        }
+
+        @-webkit-keyframes spin11 {
+          from {
+            -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(359deg);
+                    transform: rotate(359deg);
+          }
+        }
+        @keyframes spin11 {
+          from {
+            -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(359deg);
+                    transform: rotate(359deg);
+            -webkit-transform: rotate(359deg);
+                    transform: rotate(359deg);
+          }
+        }
+        /*-----------------End of spinner-------------------*/
+
+
+
+
+        /*--------------------- Pop-Up ---------------------*/
+        
+        .mainbox,
+        .popupwindows{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            right: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            padding: 20px;
+            text-align: center;
+            border-radius: 20px;
+            max-width: 725px;
+        }
+
+        .mainbox{
+            background-color: rgba(34,34,34,0.5);
+            z-index: 3;
+            backdrop-filter: blur(20px);
+        }
+
+        .popupwindows{
+            background-color: rgba(34,34,34,0.1);
+            backdrop-filter: blur(20px);
+        }
+        
+        .popupmaintitle{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        /*This is the sub-titles of the popup*/
+        .popuptitles{
+            font-size: 115%;
+            color: white;
+            font-weight: bold; /* Add bold effect to the title */
+            text-decoration: underline;
+        }
+
+        /*Set a space between the popup title and the paragraphs*/
+        .warnmsg,
+        .popuptitles{
+            margin-top: 30px;
+        }
+
+        .warnmessage{
+            color: #f4f4f4;
+        }
+
+        .overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.6);
+          backdrop-filter: blur(3px);
+          z-index: 90;
+        }
+        /*------------------- End Pop-Up -------------------*/
+
+        /*--------------------------------------------------*/
+        /*-----------------End General Theme----------------*/
+        /*--------------------------------------------------*/
+
+
+
+
+        /*--------------------------------------------------*/
+        /*------------------ Specific Theme-----------------*/
+        /*--------------------------------------------------*/
+        
+        /*------------------- Main Title -------------------*/
+        .titleyellow {
+            margin-top: 20px;
+            font-size: 160%;
+            color: #fcda00;
+            text-shadow: 2px 2px #494949;
+            margin-bottom: 70px;
+        }
+
+        /*---------------------- Form ----------------------*/
+        .form-group{
+            max-width: 400px;
+            position: relative;
+            text-align: left;
+            left: 50%;
+            right: 50%;
+            transform: translate(-50%, -50%);
+        }
+        option {
+            background-color: #353535;
+        }
+        input[type=text], select, textarea {
+            background-color: rgba(34,34,34,0.6);
+            border-radius: 30px;
+            color: #a3a3a3;
+        }
+        input[type=email], select, textarea {
+            background-color: rgba(34,34,34,0.6);
+            border-radius: 30px;
+            color: #a3a3a3;
+            padding-left: 10px;
+        }
+        input[type=text]:focus {
+            background-color: rgba(34,34,34,0.9);
+            color: white;
+        }
+        input[type=email]:focus {
+            background-color: rgba(34,34,34,0.9);
+            color: white;
+        }
+
+        .dropdownlist{
+            max-width: 400px;
+        }
+        .h-captcha{
+            left: 50%;
+            margin-top: 50px;
+            margin-bottom: -60px;
+            transform: translate(11%);
+        }
+        .btncreate {
+            position: relative;
+            margin-top: 35px;
+            margin-bottom: 10px;
+        }
+        .form-control{
+            margin-top: 3%;
+            margin-bottom: 1%;
+        }
+        /*-------------------- End Form --------------------*/
+
+
+
+
+        /*----------------- Telegram Links -----------------*/
+        .btntlg {
+            margin: 0;
+            position: relative;
+            margin-bottom: 35px;
+        }
+        /*--------------- End Telegram Links ---------------*/
+
+
+
+
+        /*------------------- Status bar -------------------*/
+        .status{
+            margin-bottom: -10px;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 30px;
+            max-width: 500px;
+
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .statop{
+            color: lawngreen;
+        }
+        .statnw{
+            color: darkred;
+        }
+        .statfx{
+            color: darkgoldenrod;
+        }
+        /*----------------- End Status bar -----------------*/
+
+
+
+
+        /*------------------- PopUp Create -----------------*/
+        .creatingtitle{
+            margin-top: 2rem;
+            color: #fff;
+            font-size: 160%;
+        }
+        .green{
+            color: lawngreen;
+        }
+        .drivecreated{
+            color: #fff;
+            font-size: 110%;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+        .linkdrivecreated{
+            color: #71e002;
+        }
+        .linkdrivecreated:hover{
+            color: #4c9107;
+        }
+        .aftercreation {
+            padding-left: 4%;
+            padding-right: 4%;
+        }
+        /*----------------- End PopUp Create ---------------*/
+
+
+
+        /*------------------- PopUp Error ------------------*/
+        .popupwindows{
+            z-index: 400; 
+            background-color: rgba(34,34,34,0.96);
+        }
+
+        .warn{
+            color: cyan;
+        }
+
+        .closepopup{
+            text-align: center;
+            font-size: 100%;
+            cursor: pointer;
+            color: white;
+        }
+        .btn-lg.round {
+            border-radius: 24px;
+        }
+        .errorsub{
+              margin-left: 10px;
+              margin-right: 10px;
+        }
+        /*----------------- End PopUp Error ----------------*/
+
+
+
+
+        /*------------------- Pop-Up Info ------------------*/
+        .helpbtn{
+            font-weight: bold;
+            z-index: 399;
+            font-size: 110%;
+            color: #8f9392;
+            
+            margin-bottom: -10px;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 30px;
+            max-width: 20px;
+
+            left: 100%;
+            transform: translate(-100%);
+        }
+        .helpbtn:hover{
+            color: #3f3f3f;
+            background-color: #191c1b ;
+            cursor: help;
+        }
+
+        /*Sow the modal in the top of the windows*/
+        .infopopup{
+            z-index: 999;
+        }
+
+        /* Links */
+        .info{
+            color: #fcda00;
+        }
+        .info:hover{
+            color: #db8c04;
+        }
+        .donate{
+            margin-top: 20px;
+            margin-bottom: -3px;
+            color: #8f9392;
+            text-shadow: 1px 1px #3f3f3f;
+            font-size: 85%;
+        }
+        .version{
+            color: #8f9392;
+            margin-bottom: -10px;
+        }
+        /*----------------- End Pop-Up Info ----------------*/
+
+
+
+
+        /*------------------ Pop-Up Error ------------------*/
+        .close-modal {
+            position: absolute;
+            top: 1%;
+            right: 2%;
+            font-size: 25px;
+            color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        .close-modal:hover,
+        .copyerror:hover{
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .errortitle{
+            margin-top: 2rem;
+            color: #fff;
+        }
+        .supportbtn{
+            margin-bottom: 2rem;
+        }
+        .copyerror{
+            position: absolute;
+            border: none;
+            background: rgba(32, 32, 32, 0.85);
+            color: rgba(255, 255, 255, 0.4); 
+            bottom:20px;
+            right:32px;
+        }
+        .errortb{
+            border-radius: 7px; 
+            margin-bottom: 10px; 
+            margin-top: 20px; color:#fff; 
+            resize: none;
+            outline: none;
+            padding-top: 2px;
+            width: 100%;
+        }
+        .textareaerr{
+            display:inline-block;
+            position:relative;
+            padding-left: 5%;
+            padding-right: 5%;
+            width: 90%;
+            max-width: 500px;
+        }
+
+
+
+
+
+
+
+
+        .modalErr,
+        .modalCreate {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+
+            text-align: center;
+            background-color: rgba(32, 32, 32, 0.85);
+            color: rgb(184, 180, 180);
+            border-radius: 10px;
+            box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            backdrop-filter: blur(3px);
+        }
+
+        .modalCreate{
+            z-index: 95;
+        }
+        /*---------------- End Pop-Up Error ----------------*/
+
+
+
+
+        /*--------------------Responsive--------------------*/
+
+        @media (max-width: 750px ) {
+            .mainbox,
+            .popupwindows{
+                width: 97%;
+                top: 50%;
+                left: 50%;
+                right: 50%;
+            }
+            .titleyellow{
+                font-size: 130%;
+            }
+            .dropdownlist{
+                width: 99%;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .h-captcha{
+                margin-top: 50px;
+                margin-bottom: -60px;
+            }
+            .modalErr{
+                width: 90%;
+            }
+        }
+        /*-----------------End of responsive----------------*/
+
+        /*--------------------------------------------------*/
+        /*---------------- End Specific Theme---------------*/
+        /*--------------------------------------------------*/
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+
+
+<body>
+
+
+<header>
+    <!-- Warning modal-->
+    <div class="popupwindows warnpopup">
+        <h1 class="popupmaintitle warn">Before using</h1>
+        <p class="warnmessage">
+            <br>This website is a free generator of <a class="warn" href="https://support.google.com/a/users/answer/9310156" target="_blank">shared drives</a>. <br>
+            But free doesn't mean that you can abuse!<br>
+
+            <br></p>
+        <h3 class="popuptitles">What is considered as abuse?</h3>
+        <p class="warnmessage">
+            - Creating <a class="warn" href="https://t.me/msgsuitechat/3011" target="_blank">tens of empty shared drives</a> <br>
+            - Storing Tb of data that you will never use<br>
+            - Storing illegal stuff or porn
+        </p>
+        <h3 class="popuptitles">What are the possible consequences due to abuse?</h3>
+        <p class="warnmessage">
+            - Google will put restrictions as <a class="warn" href="https://t.me/msgsuite/10" target="_blank">they will do on EDU</a><br>
+            - University and organizations can delete all team drives<br>
+            - University and organizations will cancelled their subscription (worst case scenario)<br><br>
+        </p>
+        <p class="warnmessage warnmsg">
+            Abusing this free service will lead to more google restrictions.
+        </p>
+        <div class="btncreate">
+            <button type="submit" class="btn btn-outline-info btn-sm btn-lg round closepopup">I accept the terms</button>
+        </div>
+
+    </div>
+
+    <!-- Help Modal -->
+    <div class="popupwindows infopopup hidden">
+        <h1 class="popupmaintitle" style="color: #fcda00;">Help & About</h1>
+
+        <h3 class="popuptitles">Common questions</h3>
+        <p class="warnmessage">
+            <a style="font-weight: bold">Q: What is a shared drive?</a><br>
+            A: See <a class="info" href="https://support.google.com/a/users/answer/9310156" target="_blank">this Google Support post</a> learn more about Shared Drives<br>
+
+        </p>
+        <p class="warnmessage">
+            <a style="font-weight: bold">Q: How much data can I put on a shared drive?</a><br>
+            A: Just like my drive, the shared drives have limits too. Read <a class="info" href="https://support.google.com/a/answer/7338880" target="_blank">this article</a> to learn <br>more about these restrictions.<br>
+        </p>
+        <p class="warnmessage">
+            <a style="font-weight: bold">Q: How long will last my shared drive?</a><br>
+            A: Theoretically, a shared drive is for life. BUT if you store illegal things, porn, or abuse<br> the free storage, your shared drive can be deleted either by Google or by the subscription owner.
+        </p>
+
+        <h3 class="popuptitles">About this website</h3>
+        <p class="warnmessage">
+            This website has been created in February 2021 by the MsGsuite Admin.<br>
+            Three months after the public launch of it, <a class="info" href="https://t.me/msgsuite/22" target="_blank">70k shared drive has been created</a>.<br>
+            I made this free website because I believe that everyone should have free and abundant cloud storage.<br>
+        </p>
+        <p class="warnmessage warnmsg">
+            If you have more questions, do not hesitate to ask them into our <a  class="info" href="https://t.me/msgsuitechat" target="_blank">chat</a>
+        </p>
+        <div class="btncreate">
+            <button type="submit" class="btn btn-outline-warning btn-sm btn-lg round closeinfo">Go back to the generator</button>
+        </div>
+        <div>
+            <p class="donate">Donate : 1EyzXHCLBspmVStE6DohBVWRQUhevwYZW1</p>
+            <p class="version">v4.2 - MsGsuite 2021</p>
+        </div>
+    </div>
+
+
+    <!-- Main windows (the generator) -->
+    <div class="mainbox">
+        <div class="info-form">
+            <form id="teamDriveForm">
+                <!-- Button to show the help modal -->
+                <h1 class="status helpbtn">&#63;</h1>
+                <!-- Logo and title -->
+                <h1><img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" alt="Google Logo" style="width:50px;height:50px;"></h1>
+                <h5 class="titleyellow"><b>Create Google Shared Drives for FREE !</b></h5>
+                <!-- Input area for the shared drive name-->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="teamDriveName" placeholder="💬 Shared Drive name" />
+                </div>
+                <!-- Input area for the email address-->
+                <div class="form-group">
+                    <input type="email" class="form-control" id="emailAddress" placeholder="✉️ Your Gmail adress" />
+                </div>
+
+                <!-- List of your different domains -->
+                <div class="form-group">
+                    <select id="channel" style="height: 27px;"  type="text" list="chlist" class="dropdownlist">
+                        <option value="0" selected>🎲 Random</option>
+                        <option value="1">01 - Zespół Szkół z Oddziałami Sportowymi nr 1</option>
+                        <option value="2">02 - Universidad de Puerto Rico 2</option>
+                        <option value="3">03 - Lincoln Academy</option>
+                        <option value="4">04 - Zespół Szkół z Oddziałami Sportowymi nr 1</option>
+                        <option value="5">05 - Texas Woman's University | Thanks to @Hidden404not</option>
+                        <option value="6">06 - Özel Yönder Okulları</option>
+                        <option value="7">07 - Ngee Ann Polytechnic</option>
+                        <option value="8">08 - The College of St. Scholastica</option>
+                        <option value="9">09 - ПГТ "Проф.д-р Асен Златаров"</option>
+                        <option value="10">10 - Wadsworth City Schools</option>
+                        <option value="11">11 - Clark County School District</option>
+                        <option value="12">12 - Lindsey Wilson College</option>
+                        <option value="13">13 - Springfield Public Schools</option>
+                        <option value="14">14 - Nordoniaschools.org</option>
+                        <option value="15">15 - 彰化藝術高中</option>
+                        <option value="16">16 - Fachoberschule für Wirtschaft, Grafik und Kommunikation Julius und Gilbert Durst</option>
+                        <option value="17">17 - 51 Средно Училище "Елисавета Багряна"</option>
+                        <option value="18">18 - SAIS Dubai</option>
+                        <option value="19">19 - Dighton-Rehoboth Regional School District</option>
+                        <option value="20">20 - High Tech High</option>
+                        <option value="21">21 - Instituto Educacional Crescer</option>
+                        <option value="22">22 - Brookville Local School District</option>
+                        <option value="23">23 - Maui High School</option>
+                        <option value="24">24 - Montgomery Bell Academy</option>
+                        <option value="25">25 - Școala Gimnazială Jimbolia</option>
+                        <option value="26">26 - Green Dot Public Schools</option>
+                        <option value="27">27 - Russell County Public Schools</option>
+                        <option value="28">28 - Franklin County Schools</option>
+                        <option value="29">29 - Maumee City Schools</option>
+                        <option value="30">30 - George L Egbert Intermediate School</option>
+                        <option value="31">31 - COLEGIO CRISTO REY</option>
+                        <option value="32">32 - IPAE</option>
+                        <option value="33">33 - Pennsauken Public Schools</option>
+                        <option value="34">34 - North Crawford School District</option>
+                        <option value="35">35 - Garland ISD</option>
+                        <option value="36">36 - Central Square School District</option>
+                        <option value="37">37 - Endeavour Learning Trust</option>
+                        <option value="38">38 - Școala Gimnazială "Sfântul Nicolae" Târgu Jiu</option>
+                        <option value="39">39 - Secretaria de Estado de Educação do Distrito Federal</option>
+                        <option value="40">40 - Secretaria de Estado de Educação do Distrito Federal 2</option>
+                        <option value="41">41 - Dinas Pendidikan DKI Jakarta Indonesia</option>
+                        <option value="42">42 - Orange County Public Schools</option>
+                        <option value="43">43 - Instituto Educacional Crescer</option>
+                        <option value="44">44 - Instituto Educacional Crescer 2</option>
+                        <option value="45">45 - DepEd Dasmariñas</option>
+                        <option value="46">46 - Liceul Waldorf Cluj</option>
+                        <option value="47">47 - Los Rios Community College District</option>
+                        <option value="48">48 - Morris Community High School</option>
+                        <option value="49">49 - Holyoke Community College</option>
+                        <option value="50">50 - Three H Redwood Academy</option>
+                        <option value="51">51 - Szkola Podstawowa Nr 1 w Choszcznie</option>
+                        <option value="52">52 - Winooski School District</option>
+                        <option value="53">53 - Columbus City Schools</option>
+                        <option value="54">54 - Lasnamae Gymnasium (in estonian Lasnamäe Gümnaasium)</option>
+                        <option value="55">55 - Linden Unified School District</option>
+                        <option value="56">56 - Основно училище "Княз Александър I"</option>
+                        <option value="57">57 - CORPORACION EDUCACIONAL PARTHENON COLLEGE</option>
+                        <option value="58">58 - Schools Division Office of Quezon City</option>
+                        <option value="59">59 - IIS Campus dei Licei "Massimiliano Ramadù"</option>
+                        <option value="60">60 - Colegios Mendel</option>
+                        <option value="61">61 - CNEC CHRISTIAN COLLEGE</option>
+                        <option value="62">62 - UNIDAD EDUCATIVA RODRIGUEZ ALBORNOZ</option>
+                        <option value="63">63 - Township High School District 113</option>
+                        <option value="64">64 - Střední škola ARCUS, s.r.o.</option>
+                        <option value="65">65 - Lung Kong World Federation School Limited Lau Wong Fat Secondary School</option>
+                        <option value="66">66 - Marks Kommun</option>
+                        <option value="67">67 - COLEGIO CRISTO REY</option>
+                        <option value="68">68 - Theatre Arts Production Company</option>
+                        <option value="69">69 - Instituto Educacional Crescer</option>
+                        <option value="70">70 - Lakeland School District 2</option>
+                        <option value="71">71 - Lakeland School District 3</option>
+                        <option value="72">72 - Cabarrus County Schools</option>
+                        <option value="73">73 - SMK cerme</option>
+                        <option value="74">74 - SMK cerme 2 </option>
+                        <option value="75">75 - SMK cerme 3</option>
+                        <option value="76">76 - SMK cerme 4</option>
+                        <option value="77">77 - SMK cerme 5</option>
+                        <option value="78">78 - Nation Star Academy</option>
+                        <option value="79">79 - Queens College Indore</option>
+                        <option value="80">80 - Escola Secundária Francisco Franco</option>
+                        <option value="81">81 - Escola Secundária Francisco Franco 2</option>
+                        <option value="82">82 - Agrupamento de Escola Portela e Moscavide</option>
+                        <option value="83">83 - Liceul Tehnologic nr. 1 Luduș</option>
+                        <option value="84">84 - District School Board of Niagara</option>
+                        <option value="85">85 - Maskwacis Education Schools Commission (MESC)</option>
+                        <option value="86">86 - University of Alberta</option>
+                        <option value="87">87 - Centre de services scolaire Marie-Victorin</option>
+                        <option value="88">88 - CSSVDC</option>
+                        <option value="89">89 - Halton District School Board</option>
+                        <option value="90">90 - McMaster University</option>
+                        <option value="91">91 - Stuyvesant</option>
+                        <option value="92">92 - Dirección de Bachillerato Tecnológico</option>
+                        <option value="93">93 - Naujosios Akmenės "Saulėtekio" progimnazija</option>
+                        <option value="94">94 - 서울특별시교육청</option>
+                        <option value="95">95 - Liceo "Alfonso Gatto"</option>
+                        <option value="96">96 - Дмитрівська загальноосвітня школа І-ІІІ ступенів</option>
+                        <option value="97">97 - Kang Chiao International School Linkou Campus</option>
+                        <option value="98">98 - Kementerian Pendidikan dan Kebudayaan Indonesia (SMP)</option>
+                        <option value="99">99 - Kwun Tong Maryknoll College</option>
+                        <option value="100">100 - MsGsuite Enterprise (trial subscription)</option>
+                        <option value="101">101 - Universidad de Salamanca</option>
+                        <option value="102">102 - Alghad Almoshreq Azharian Institute</option>
+                        <option value="103">103 - Metro Catholic School</option>
+                        <option value="104">104 - Real Colegio San Franciso de Asis</option>
+                        <option value="105">105 - DEM de la Comuna de Cisnes</option>
+                        <option value="106">106 - Lycée Charles de Gaulle</option>
+                        <option value="107">107 - Colégio Master</option>
+                        <option value="108">108 - Prefeitura Municipal de Canoas/RS</option>
+                        <option value="109">109 - Secretaria Municipal de Educação de São Paulo – SME</option>
+                        <option value="110">110 - UNOESC</option>
+                        <option value="111">111 - SEED</option>
+                        <option value="112">112 - SEED 2</option>
+                        <option value="113">113 - SED-SC</option>
+                        <option value="114">114 - Професионална гимназия по механотехника, електроника, телекомуникации и транспорт "Христо Ботев"</option>
+                        <option value="115">115 - Colegio Universitario Patagónico</option>
+                        <option value="116">116 - SAIS Dubai</option>
+                        <option value="117">117 - Ovanåker kommun</option>
+                        <option value="118">118 - ГТШ "Бранко Жежељ"</option>
+                        <option value="119">119 - Beylikdüzü Büyükşehir Ortaokulu</option>
+                        <option value="120">120 - Colegiul Tehnic „Gheorghe Asachi” Botosani</option>
+                        <option value="121">121 - Școala Gimnazială ”Ion Minulescu”</option>
+                        <option value="122">122 - Școala Gimnazială Ilva Mare</option>
+                        <option value="123">123 - Școala Gimnazială "George Emil Palade" Buzău</option>
+                        <option value="124">124 - Liceul cu Program Sportiv "Nicolae Rotaru" Constanța</option>
+                        <option value="125">125 - Liceul Teoretic Waldorf Iasi</option>
+                        <option value="126">126 - ȘCOALA GIMNAZIALĂ "HATMANUL ȘENDREA" DOLHEȘTII MARI</option>
+                        <option value="127">127 - Liceul Teoretic "Ady Endre" Oradea</option>
+                        <option value="128">128 - Clark County School District</option>
+                        <option value="129">129 - Montgomery Public Schools</option>
+                        <option value="130">130 - Schools Division Office of Quezon City</option>
+                        <option value="131">131 - Secretaria de Educacao da Prefeitura de Jaguariuna</option>
+                        <option value="132">132 - Secretaria de Educacao da Prefeitura de Jaguariuna 2</option>
+                        <option value="133">133 - La Salle Argentina</option>
+                        <option value="134">134 - Opinnet.fi</option>
+                        <option value="135">135 - SEDUC - Secretaria da Educação do Rio Grande do Sul</option>
+                        <option value="136">136 - Instituto Educacional Crescer</option>
+                        <option value="137">137 - Crowley ISD</option>
+                        <option value="138">138 - Colegio Libertador Simón Bolívar</option>
+                        <option value="139">139 - Liceul de Arte "Dr. Palló Imre" Odorheiu Secuiesc</option>
+                        <option value="140">140 - DepEd Cavite Province</option>
+                        <option value="141">141 - Liceul Tehnologic "Elie Radu"</option>
+                        <option value="142">142 - Escuela Secundaria Técnica 144</option>
+                        <option value="143">143 - Dwujęzyczne Szkoły im. W. Kopalińskiego</option>
+                        <option value="144">144 - 莒光國小</option>
+                        <option value="145">145 - Hackett Public School District</option>
+                        <option value="146">146 - ZSP Witkowo</option>
+                        <option value="147">147 - Szkoła Podstawowa nr 40 w Gdyni</option>
+                        <option value="148">148 - Collège Français</option>
+                        <option value="149">149 - Pyhäjoen kunta</option>
+                        <option value="150">150 - Secretaria de Educação de Taboão da Serra</option>
+                    </select>
+                </div>
+
+                <!-- Hcaptcha verification -->
+                <div class="form-group">
+                    <div class="h-captcha" data-sitekey="1b25fe2c-fa04-4ae0-b1b7-61d10597299c" data-theme="dark"></div>
+                </div>
+                <!-- Function do customize the theme of the created shared drive (disabled by default) -->
+                <div id="customThemeSection" class="d-none">
+                    <div id="teamDriveThemePreview"></div>
+                    <div id="teamDriveThemeOptions">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="teamDriveTheme" id="teamDriveThemeOptionRandom" value="random" checked/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button create -->
+                <div class="btncreate">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+                <!-- Telegram Channel & Chat buttons -->
+                <div class="btntlg">
+                    <a class="btn btn-danger btn-sm btn-lg round" href="https://www.t.me/msgsuite" target="_blank" role="button">Telegram Channel</a>
+                    <a class="btn btn-secondary btn-sm btn-lg round" href="https://www.t.me/msgsuitechat" target="_blank" role="button">Telegram Chat </a>
+                </div>
+
+                <!-- Status bar. You have to change the values manually -->
+                <div class="status">
+                    <p class="btn statop">Operational : 148</p>
+                    <p class="btn statnw">Non Working : 2</p>
+                    <p class="btn statfx">Fixing : 2</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</head>
+
+<!-- Modal Create Shared Drive -->
+<div class="modalCreate hidden">
+    <button class="close-modal closecreatesd">&times;</button>
+    <h5 class="creatingtitle">Creating your shared drive</h5>
+    <div class="beforecreation">
+        <p>This can take some time. Please wait.</p>
+        <div class="center"><div id="nest5"></div></div>
+    </div>
+    <div class="aftercreation hidden">
+        <p class="drivecreated">You can find your shared drive here : <a class="linkdrivecreated" href="https://drive.google.com/drive/shared-drives" target="_blank">My Shared Drives</a></p>
+        <p>Thanks for using our services! To be informed about the last updates and news, follow us on Telegram.</p>
+        <a class="btn btn-secondary btn-sm btn-lg round supportbtn" href="https://www.t.me/msgsuite" target="_blank" role="button">Telegram Channel</a>
+    </div>
+</div>
+
+<!-- Modal Error -->
+<div class="modalErr hidden">
+    <button class="close-modal closeerror">&times;</button>
+    <h2 class="errortitle">💀 We've got an error!</h2>
+    <div class="textareaerr">
+        <textarea id="areaerror" name="myTextBox" class="errortb" readonly>The error message will be displayed here instead of this dummy text</textarea>
+        <button onclick="copyMyText()" class="copyerror bi bi-files"></button>
+    </div>
+    <p class="errorsub">Most of time, trying again solve the problem. If you don't understand the error message, please send it to the support chat. They will help you solve it.</p>    
+    <a class="btn btn-secondary btn-sm btn-lg round supportbtn" href="https://www.t.me/msgsuitechat" target="_blank" role="button">Telegram Support Chat</a>
+</div>
+
+
+<div class="overlay hidden"></div>
+
+</body>
+
+<script>
+
+    'use strict'
+    
+    const modal = document.querySelector('.modalErr');
+    const modalCreate = document.querySelector('.modalCreate');
+    const overlay = document.querySelector('.overlay');
+    const btnClose = document.querySelector('.closeerror');
+    const btnCloseCreate = document.querySelector('.closecreatesd');
+    const popupwindows = document.querySelector('.warnpopup'); // Warining (terms & conditions) PopUp
+    const closewarnings = document.querySelector('.closepopup'); // Close the warnings
+    const helpbtn = document.querySelector('.helpbtn'); // Help Buton
+    const closehelpbtn = document.querySelector('.closeinfo');
+    const infopupup = document.querySelector('.infopopup');
+    const creatingtitle = document.querySelector('.creatingtitle');
+    
+    const closewanings = function(){
+        popupwindows.classList.add('hidden');
+    }
+         
+    const openinfo = function(){
+        infopupup.classList.remove('hidden');
+    }
+
+    const closeinfo = function(){
+        infopupup.classList.add('hidden');
+    }
+
+    const closeModal = function(){
+        modal.classList.add('hidden');
+        overlay.classList.add('hidden');
+        modalCreate.classList.add('hidden');
+    }
+    const closeModalCreate = function(){
+        modalCreate.classList.add('hidden');
+        overlay.classList.add('hidden');
+    }
+
+    closewarnings.addEventListener('click', closewanings)
+    btnClose.addEventListener('click', closeModal)
+    btnCloseCreate.addEventListener('click', closeModalCreate)
+
+    helpbtn.addEventListener('click', openinfo)
+    closehelpbtn.addEventListener('click', closeinfo)
+
+    function copyMyText() {
+            //select the element with the id "copyMe", must be a text box
+        var textToCopy = document.getElementById("areaerror");
+            //select the text in the text box
+        textToCopy.select();
+            //copy the text to the clipboard
+        document.execCommand("copy");
+    }
+</script>
+<script>
+    var teamDriveThemes;
+    $("input[id=customTheme]").change(function() {
+        if ($(this).is(":checked")) {
+            $("#customThemeSection").removeClass("d-none");
+        } else {
+            $("#customThemeSection").addClass("d-none");
+            $("input[name=teamDriveTheme]")[0].click();
+        }
+    });
+    $.get("/teamDriveThemes", function(json) {
+        teamDriveThemes = json.teamDriveThemes;
+        $.each(json.teamDriveThemes, function(i, item) {
+            $("#teamDriveThemeOptions").append(`
+        <div class="form-check">
+           <input
+            class="form-check-input"
+            type="radio"
+            name="teamDriveTheme"
+            id="teamDriveThemeOption-${item.id}"
+            value="${item.id}"
+          />
+          <label class="form-check-label" for="teamDriveThemeOption-${item.id}">
+           ${item.id}
+          </label>
+        </div>
+        `);
+      });
+      $("input[name=teamDriveTheme]").change(function() {
+        var themeId = this.value;
+        if (themeId === "random") {
+          $("#teamDriveThemePreview").html("");
+        } else {
+          var theme = teamDriveThemes.find(function(t) {
+            return t.id == themeId;
+          });
+          $("#teamDriveThemePreview").html(
+            `
+          <div class="card" style="background-color: ${theme.colorRgb}">
+            <img src="${theme.backgroundImageLink}" class="card-img-top" alt="${theme.id}" />
+            <div class="card-body">
+              <h5 class="card-text" style="color: white">
+                ${theme.id}
+              </h5>
+            </div>
+          </div>
+      `
+          );
+        }
+      });
+      $("#teamDriveForm").on("submit", function(event) {
+        event.preventDefault();
+        document.querySelector('.modalCreate').classList.remove('hidden');
+        document.querySelector('.overlay').classList.remove('hidden');
+        document.querySelector('.creatingtitle').classList.remove('green');
+        document.querySelector('.beforecreation').classList.remove('hidden');
+        document.querySelector('.aftercreation').classList.add('hidden');
+        creatingtitle.textContent = 'Creating your shared drive';
+        $.ajax({
+          type: "POST",
+          url: "/drive",
+          data: JSON.stringify({
+            teamDriveName: $("input[id=teamDriveName]").val(),
+            teamDriveThemeId: $("input[name=teamDriveTheme]:checked").val(),
+            emailAddress: $("input[id=emailAddress]").val(),
+			channel: $("select[id=channel]").val(),
+			recaptcha: hcaptcha.getResponse()
+          }),
+          success: function(data) {
+            creatingtitle.textContent = '✅ Your shared drive has been created';
+            document.querySelector('.creatingtitle').classList.add('green');
+            document.querySelector('.beforecreation').classList.add('hidden');
+            document.querySelector('.aftercreation').classList.remove('hidden');
+          },
+          error: function(request, status, error) {
+            const errmsg = request.responseText;
+            document.getElementById('areaerror').value = errmsg;
+            document.querySelector('.modalErr').classList.remove('hidden');
+            document.querySelector('.overlay').classList.remove('hidden');
+          },
+          contentType: "application/json"
+        });
+      });
+    });
+</script>
+</html>
